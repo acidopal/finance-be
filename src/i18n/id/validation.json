@@ -1,0 +1,11 @@
+{
+  "VALIDATION": {
+    "NOT_FOUND": "Sumber daya tidak ditemukan",
+    "ALREADY_EXISTS": "Sumber daya sudah ada",
+    "INVALID_CREDENTIALS": "Kredensial tidak valid",
+    "UNAUTHORIZED": "Akses tidak sah",
+    "FORBIDDEN": "Akses dilarang",
+    "BAD_REQUEST": "Permintaan tidak valid",
+    "INTERNAL_SERVER_ERROR": "Kesalahan server internal"
+  }
+}
