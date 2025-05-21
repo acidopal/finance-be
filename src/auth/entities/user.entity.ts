@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import * as bcrypt from 'bcrypt';
-import * as md5 from 'md5';
 import { Role } from './role.entity';
+import { createHash } from 'crypto';
 
 @Entity('adm_user')
 export class User {
@@ -66,8 +66,8 @@ export class User {
     if (this.password && this.password.length === 32) {
       console.log('Stored password appears to be an MD5 hash');
 
-      // Calculate MD5 hash of the input password
-      const inputMd5 = md5(password);
+      // Calculate MD5 hash of the input password using Node.js crypto module
+      const inputMd5 = createHash('md5').update(password).digest('hex');
       console.log('Input password MD5:', inputMd5);
 
       // Compare the MD5 hashes

@@ -34,7 +34,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "clean": "rm -rf node_modules/.cache && rm -rf dist"
+    "clean": "rm -rf node_modules/.cache && rm -rf dist",
+    "start:bun": "./start-bun.sh",
+    "start:bun:dev": "NODE_ENV=development TZ=UTC bun run src/main.ts",
+    "start:bun:prod": "NODE_ENV=production TZ=UTC bun run src/main.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.1",
@@ -47,7 +50,6 @@
     "@nestjs/swagger": "^11.2.0",
     "@nestjs/typeorm": "^11.0.0",
     "@types/compression": "^1.7.5",
-    "@types/md5": "^2.3.5",
     "bcrypt": "^6.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
@@ -55,7 +57,6 @@
     "express-ctx": "^0.1.1",
     "express-rate-limit": "^7.5.0",
     "helmet": "^8.1.0",
-    "md5": "^2.3.0",
     "morgan": "^1.10.0",
     "mysql2": "^3.14.1",
     "nestjs-i18n": "^10.5.1",

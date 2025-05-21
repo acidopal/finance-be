@@ -1,0 +1,21 @@
+[install]
+# Use the exact versions specified in package.json
+exact = true
+
+[install.cache]
+# Enable the global cache
+dir = ".bun/install/cache"
+disable = false
+
+[runtime]
+# Increase the maximum number of file descriptors
+max_open_files = 10000
+
+[debug]
+# Enable source maps for better debugging
+source_maps = true
+
+[watch]
+# Configure file watching
+ignore_dirs = ["node_modules", ".git", "dist"]
+extensions = [".ts", ".js", ".json"]

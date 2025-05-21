@@ -7,8 +7,25 @@ import { HttpExceptionFilter } from "./filters/bad-request.filter";
 import { QueryFailedFilter } from "./filters/query-failed.filter";
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { urlencoded, json } from 'express';
-import * as compression from 'compression';
 import { ConfigService } from '@nestjs/config';
+
+// Check if running with Bun and handle compression accordingly
+const isBun = typeof process !== 'undefined' &&
+              typeof process.versions !== 'undefined' &&
+              typeof process.versions.bun !== 'undefined';
+
+let compression;
+if (isBun) {
+  console.warn('Running with Bun - compression disabled for compatibility');
+  compression = () => (req, res, next) => next();
+} else {
+  try {
+    compression = require('compression');
+  } catch (e) {
+    console.warn('Compression middleware not available, skipping...');
+    compression = () => (req, res, next) => next();
+  }
+}
 
 export async function bootstrap(): Promise<NestExpressApplication> {
   const app = await NestFactory.create<NestExpressApplication>(
